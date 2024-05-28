@@ -1,0 +1,27 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block eDeclaration %}
+    <div class="container mt-4">
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4" style="font-size: calc(1px + (260 - 70) * (60vw - 320 * 1px)/ (1920 - 320));">Электронная таможенная декларация</h1>
+
+        <div class="container">
+            <p>Уважаемые пассажиры!</p>
+            <p><a href="https://customs.gov.ru/storage/document/document_file/2020-02/13/decl_rus_new_01_02_2020%20(1).pdf">Вы можете самостоятельно заполнить электронный бланк</a> пассажирской таможенной декларации.</p>
+            <p>Ознакомьтесь, пожалуйста, <a href="https://customs.gov.ru/storage/document/document_file/2020-01/24/zapolnenie_tam_decl_rus_new_01_02_2020.docx"><u>с порядком</u></a> заполнения пассажирской таможенной декларации.</p>
+            <p><i>Примечание: Бланк пассажирской таможенной декларации в виде документа на бумажном носителе распечатывается на одном листе A4 с двух сторон.</i></p>
+            <p>Обратите внимание, <a href="https://edata.customs.ru/FtsPersonalCabinetWeb2017/">в личном кабинете</a> ВЭД на сайте Федеральной таможенной службы предусмотрена возможность заполнения и сохранения электронной формы пассажирской таможенной декларации (ПТД), в дальнейшем - выбора
+                декларации, заполненной ранее или заполнения новой.</p>
+            <p>Желаем Вам комфортного путешествия!</p>
+        </div>
+
+    </div>
+{% endblock %}

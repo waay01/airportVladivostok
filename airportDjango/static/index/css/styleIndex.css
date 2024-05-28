@@ -1,0 +1,171 @@
+.navBackground {
+    position: fixed;
+    background-color: transparent;
+    transition: 250ms;
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: -50%;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-container video, img {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.linkOnScoreboard {
+    color: white;
+    font-weight: 500;
+    transition: 250ms;
+}
+
+.linkOnScoreboard:hover{
+    color: #7caf7c;
+}
+
+.linkNews {
+    height: 40px;
+    color: white;
+    transition: 250ms;
+    background-color: #242424;
+}
+
+/*.linkNews:hover {*/
+/*    transform: scaleY(1.05);*/
+/*}*/
+
+@media (max-width: 1400px) {
+    #carousel {
+        display: none;
+    }
+
+    #cards {
+        display: block;
+    }
+}
+
+
+
+.itemTables {
+    -ms-flex-preferred-size: calc(33.33333% - 30px);
+    flex-basis: calc(33.33333% - 30px);
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.itemLink {
+    display: block;
+    padding: 30px 20px;
+    background-color: #242424;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+}
+
+.itemLink:hover .itemBg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+}
+
+.itemTitle {
+    /*min-height: 87px;*/
+    margin: 0 0 25px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 24px;
+    color: #FFF;
+    z-index: 2;
+    position: relative;
+}
+
+.itemBox {
+    font-size: 18px;
+    color: #FFF;
+    z-index: 2;
+    position: relative;
+}
+
+.itemBg {
+    height: 128px;
+    width: 128px;
+    background-color: #ff595e;
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    border-radius: 50%;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.col:nth-child(2n) .itemBg {
+    background-color: #ffca3a;
+}
+
+.col:nth-child(3n) .itemBg {
+    background-color: #8ac926;
+}
+
+.col:nth-child(4n) .itemBg {
+    background-color: #1982c4;
+}
+
+.col:nth-child(5n) .itemBg {
+    background-color: #6a4c93;
+}
+
+.col:nth-child(6n) .itemBg {
+    background-color: #4a4e69;
+}
+
+.col:nth-child(7n) .itemBg {
+    background-color: #9a8c98;
+}
+
+.col:nth-child(8n) .itemBg {
+    background-color: #f2e9e4;
+}
+
+
+@media only screen and (max-width: 979px) {
+    .itemTables {
+        -ms-flex-preferred-size: calc(50% - 30px);
+        flex-basis: calc(50% - 30px);
+    }
+
+    .itemTitle {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 639px) {
+    .itemTables {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+
+    .itemTitle {
+        min-height: 72px;
+        line-height: 1;
+        font-size: 24px;
+    }
+
+    .itemLink {
+        padding: 22px 40px;
+    }
+
+    .itemBox {
+        font-size: 16px;
+    }
+}
+

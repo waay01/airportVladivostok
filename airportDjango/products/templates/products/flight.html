@@ -1,0 +1,309 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block flight %}
+    {% for item in airplanesList %}
+        <div class="container my-5">
+            <div class="d-flex flex-column">
+                <p class="fw-medium text-black"
+                   style="font-size: calc(45 * 1px + (260 - 45) * (36vw - 320 * 1px)/ (1920 - 320));">{{ item.id_direction.nameAirport }}</p>
+                <div class="d-flex fs-4">
+                    <p class="fw-bold">{{ item.scheduledTimeDep }}</p>
+                    <p> / </p>
+                    <p class="fw-bold">{{ item.scheduledDateDep|date:"j E" }}</p>
+                    <p> / </p>
+                    <p class="fw-bold">{{ item.flightNumber }}</p>
+                    <p> / </p>
+                    <p class="fw-bold">{{ item.id_status }}</p>
+                </div>
+            </div>
+            <span class="fw-medium text-black">Всё время и даты указаны по МСК.</span>
+        </div>
+
+        <div class="container" style="border-top: 2px solid #919396;"></div>
+
+        <div class="container d-flex mt-3">
+            <a href="#" class="choose activeChoose" data-target="one">Информация о рейсе</a>
+            <a href="#" class="choose" data-target="two">Вылетающим</a>
+            <a href="#" class="choose" data-target="three">Провожающим</a>
+            <a href="#" class="choose" data-target="four">Самолет</a>
+            <a href="#" class="choose" data-target="five">Как добраться</a>
+        </div>
+
+        <div class="container mt-5 fs-5 one">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="fw-bold">В аэропорт</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="fw-bold">{{ timeForPassing }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Приезжайте за <span class="fw-bold">2,5</span> часа до вылета во <span class="fw-bold">{{ item.id_terminal }}</span> терминал.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="fw-bold">Регистрация</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="fw-bold">
+                        {% if item.id_status_id == 3 and item.id_status_id == 10 %} {# 3 - Отменен, 10 - Задержан #}
+                            -
+                        {% else %}
+                            {{ timeRegister }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>Рейс выполняет авиакомпания {{ item.id_airlines }}. Стойки регистрации вашего рейса —
+                        <span class="fw-bold">{{ item.receptionDesks }}</span>.
+                        <br><br>
+                        Возможность онлайн-регистрации на рейс уточняйте в своей авиакомпании.
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="fw-bold">Посадка</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="fw-bold">{{ timeForLand }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Выход на посадку <span class="fw-bold">{{ item.gate }}</span>. Посадка на рейс заканчивается за 20 минут до
+                        вылета.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="fw-bold">Отправление</p>
+                </div>
+                <div class="col-md-2">
+                    <p class="fw-bold">{{ item.scheduledTimeDep }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Ваш самолет <span class="fw-bold">{{ item.id_typeAirplane }}</span>, время в пути <span class="fw-bold">{{ timeSub }}</span></p>
+                </div>
+            </div>
+            <hr>
+            {#            <div class="row">#}
+            {#                <div class="col-md-4">#}
+            {#                    <p class="fw-bold">Время вылета</p>#}
+            {#                </div>#}
+            {#                <div class="col-md-2">#}
+            {#                    <p class="fw-bold">{{ timeTakeoff }}</p>#}
+            {#                </div>#}
+            {#                <div class="col-md-6">#}
+            {#                    <p>Время в пути <span class="fw-bold">#}
+            {#                        {% if item.id_status_id == 3 and item.id_status_id == 10 %}#}
+            {#                            -#}
+            {#                        {% else %}#}
+            {#                            {{ timeSub }}#}
+            {#                        {% endif %}#}
+            {#                    </span>.</p>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <hr>#}
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="fw-bold">Прибытие</p>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex flex-row">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold">{{ item.scheduledTimeArr }}</span>
+                            <span>{{ item.scheduledDateArr|date:"j E" }}</span>
+                        </div>
+                        {#                        <span>(+{{ item.id_direction.utc }} UTC)</span>#}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p>Вы прилетаете в <span class="fw-bold">город {{ item.id_direction.city }} (аэропорт {{ item.id_direction.nameAirport }}).</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 two">
+            <p class="col-7 fs-2">
+                Приезжайте в аэропорт заранее, чтобы успеть зарегистрироваться, сдать багаж и пройти все контроли. Если вы
+                летите международным рейсом, рекомендуем быть в аэропорту за 3 часа до вылета. Если летите внутренним рейсом — за 2 часа.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Как добраться</h1>
+            <p class="col-7 fs-4">
+                До аэропорта Владивостока можно добраться разными способами — на электричке, автобусе, такси или на личном автомобиле.
+            </p>
+            <div class="mt-5 mb-3 d-flex flex-row justify-content-around">
+                <h3>Общественный транспорт</h3>
+                <h3>Личный транспорт</h3>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="col-6 p-2">
+                    <div class="d-flex flex-row justify-content-between m-4">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4">Электричка</span>
+                            <span>От Владивостокского вокзала</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-end col-4">
+                            <p class="fw-bold fs-5">50 минут</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-between m-4">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4">Автобус</span>
+                            <span>Маршрут 107</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-end col-4">
+                            <p class="fw-bold fs-5">90 минут</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 p-2">
+                    <div class="d-flex flex-row justify-content-between m-4">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4">Такси</span>
+                            <span>Из центра Владивостока</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-end col-4">
+                            <span class="fs-5">45 минут</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-between m-4">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4">На автомобиле</span>
+                            <span>По трассе М60</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-end col-4">
+                            <span class="fs-5">40 минут</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="mt-5 mb-3 text-black">Регистрация и багаж</h1>
+            <p class="col-7 fs-4">Рекомендуем заранее зарегистрироваться на рейс онлайн на сайте авиакомпании. По прибытии в
+                аэропорт вам нужно сдать багаж на стойках регистрации вашего рейса. Не забудьте распечатать посадочный
+                талон.
+            </p>
+            <p class="col-7 fs-4">Регистрация и сдача багажа на рейсы закрывается за 40 минут до вылета.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Запрещено к перевозке</h1>
+            <p class="col-7 fs-4">Взрывчатые вещества и пиротехника, оружие и боеприпасы, ядовитые и токсичные вещества, легковоспламеняющиеся жидкости, сжатые и сжиженные газы, едкие и коррозирующие вещества, радиоактивные вещества, окисляющие вещества и органические перекиси, и другие опасные
+                предметы.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Предполётный досмотр</h1>
+            <p class="col-7 fs-4">На предполетном досмотре досматриваются все пассажиры и их ручная кладь. Запрещенные к провозу предметы конфискуются.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Что делать на досмотре</h1>
+            <ul class="col-7 fs-4">
+                <li>Cнимите верхнюю одежду, часы, металлические украшения</li>
+                <li>Приготовьтесь снять широкий ремень и обувь на высоком каблуке, если попросят</li>
+                <li>Выложите из карманов металлические предметы и электронные гаджеты</li>
+                <li>Положите все вещи в лоток и поставьте его на ленту интроскопа</li>
+                <li>Жидкости и электронные устройства положите отдельно</li>
+            </ul>
+            <p class="col-5 fs-6 border-top border-black">
+                Помните: в ручную кладь нельзя брать колющие и режущие предметы, жидкости в упаковке объемом более 100 мл, больше литра жидкостей на человека.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Провоз жидкостей, приобретённых в магазинах duty free и на борту самолёта</h1>
+            <p class="col-7 fs-4">Разрешено перевозить на борту самолёта, с соблюдением требуемых условий, в ручной клади,
+                жидкости, приобретенные в магазинах беспошлинной торговли в аэропорту или на борту воздушного судна, которые
+                должны быть упакованы в надежно запечатанный (опломбированный) пластиковый пакет, обеспечивающий
+                идентификацию доступа к содержимому пакета в течение полета, на котором имеется достоверное подтверждение
+                того, что эта покупка произведена в аэропортовых магазинах беспошлинной торговли или на борту воздушного
+                судна в день (дни) поездки. Необходимым условием является наличие посадочного талона, подтверждающего вылет
+                из аэропорта, в котором приобретены товары беспошлинной торговли, отсутствие следов вскрытия пакета, в
+                котором находятся покупки, и наличие кассового чека.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Ожидание рейса</h1>
+            <p class="col-7 fs-4">В ожидании рейса вы можете отдохнуть в бизнес-залах, посетить магазины
+                беспошлинной торговли и поесть в ресторанах.
+            </p>
+            <p class="col-7 fs-4">Посадка на рейс заканчивается за 20 минут до вылета.
+            </p>
+        </div>
+
+        <div class="container mt-5 three">
+            <p class="col-7 fs-2">
+                Вы можете проводить вылетающего пассажира до аэропорта и провести с ним время в общей зоне терминала. Помните, что после этого пассажиру перед вылетом нужно будет успеть пройти контроль и досмотр — поэтому рекомендуем приезжать в аэропорт заранее.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Как добраться</h1>
+            <p class="col-7 fs-4">
+                До аэропорта Владивосток можно добраться разными способами — на автобусе, на такси, на личном автомобиле или в арендуемой машине.
+            </p>
+            <p class="col-7 fs-4">
+                Самый надежный и предсказуемый по времени вариант — автобус. Подробнее о расписании автобусов можно узнать на соответствующей странице.
+            </p>
+            <h1 class="mt-5 mb-3 text-black">Ожидание рейса</h1>
+            <p class="col-7 fs-4">Провести время с вылетающим пассажиром можно в общей зоне терминала вылета. Посмотрите на карте, какие рестораны и магазины вы можете посетить в этой зоне.</p>
+        </div>
+
+
+        <div class="container mt-5 four">
+            <div class="col">
+                <p class="fw-bold mb-0 fs-4">Самолет</p>
+                <p class="fw-bold fs-1">{{ item.id_typeAirplane }}</p>
+            </div>
+            <div class="row">
+                <img src="{{ item.id_typeAirplane.imgAirplane.url }}" alt="Фото самолета">
+            </div>
+        </div>
+
+        <div class="container mt-5 five">
+            <div class="row">
+                <div class="mt-5 mb-3 d-flex flex-row justify-content-around">
+                    <h3>Общественный транспорт</h3>
+                    <h3>Личный транспорт</h3>
+                </div>
+                <div class="d-flex flex-row">
+                    <div class="col-6 p-2">
+                        <div class="d-flex flex-row justify-content-between m-4">
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold fs-4">Электричка</span>
+                                <span>От Владивостокского вокзала</span>
+                            </div>
+                            <div class="d-flex flex-column align-items-end col-4">
+                                <p class="fs-5">50 минут</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row justify-content-between m-4">
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold fs-4">Автобус</span>
+                                <span>Маршрут 107</span>
+                            </div>
+                            <div class="d-flex flex-column align-items-end col-4">
+                                <p class="fs-5">90 минут</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 p-2">
+                        <div class="d-flex flex-row justify-content-between m-4">
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold fs-4">Такси</span>
+                                <span>Из центра Владивостока</span>
+                            </div>
+                            <div class="d-flex flex-column align-items-end col-4">
+                                <span class="fs-5">45 минут</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex flex-row justify-content-between m-4">
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold fs-4">На автомобиле</span>
+                                <span>По трассе М60</span>
+                            </div>
+                            <div class="d-flex flex-column align-items-end col-4">
+                                <span class="fs-5">40 минут</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

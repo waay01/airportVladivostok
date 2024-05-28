@@ -1,0 +1,37 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block passengersBase %}
+    <div class="container my-5 d-flex">
+        <div class="row" style="flex: 1;">
+            <div class="col-3" style="min-width: 250px">
+                <div class="navbar-light bg-light flex-column">
+                    <div class="nav flex-column rounded-4" style="background-color: #D2D2D2; padding: 5px">
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/register/">Регистрация</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/about/">Общество</a>
+                        <div class="nav flex-column">
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="/passengers/about/">О компании</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="/passengers/pressCenter/">Пресс-центр</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="/passengers/forMedia/">Для СМИ</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="/passengers/career/">Карьера</a>
+                        </div>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/contacts/">Контакты</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/airlines/">Авиакомпании</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/mysteryPassenger/">Тайный пассажир</a>
+                    </div>
+                </div>
+            </div>
+
+            {% block about %}{% endblock %}
+            {% block pressCenter %}{% endblock %}
+            {% block forMedia %}{% endblock %}
+            {% block contacts %}{% endblock %}
+            {% block career %}{% endblock %}
+            {% block airlines %}{% endblock %}
+            {% block mysteryPassenger %}{% endblock %}
+            {% block register %}{% endblock %}
+
+        </div>
+    </div>
+
+{% endblock %}

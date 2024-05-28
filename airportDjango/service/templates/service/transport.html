@@ -1,0 +1,310 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block transport %}
+    <div class="container mt-4">
+
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Транспорт</h1>
+        <div class="row">
+            <div class="col-3">
+                <div class="navbar-light bg-light flex-column">
+                    <div class="nav flex-column" style="background-color: #D2D2D2; border-radius: 12px; padding: 5px">
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#item-1">Аренда автомобиля</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#item-2">Автобусы</a>
+                        <div class="nav flex-column">
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-1">г. Владивосток</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-2">г. Находка</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-3">г. Уссурийск</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-4">г. Арсеньев</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-5">г. Большой Камень</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-6">г. Спасск-Дальний</a>
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-2-7">г. Дальнегорск</a>
+                        </div>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#item-3">Парковки</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#item-4">Электропоезда</a>
+                        <div class="nav flex-column">
+                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#item-4-1">В аэропорт</a>
+                            <a class="nav-link ms-3 linkMenuItems" href="#item-4-2">Из аэропорта</a>
+                        </div>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#item-5">Такси</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="" tabindex="0">
+                    <h3 id="item-1">Аренда автомобиля</h3>
+                    <div class="px-5 my-3 mt-3">
+                        <p>Для удобства гостей города в аэропорту расположены стойки операторов по аренде автомобилей.</p>
+                        <p>Информационные стойки находятся в терминале:</p>
+                        <ul>
+                            <li>в общедоступной зоне на 1 этаже в Зоне выхода пассажиров внутренних рейсов (1 стойка);</li>
+                            <li>в общедоступной зоне на 1 этаже напротив эскалатора (1 стойка).</li>
+                        </ul>
+                        <a class="text-decoration-none text-black fw-bolder" href="http://www.rexrent.ru" target="_blank">www.rexrent.ru</a>
+                        <p class="mt-2">+7 (800) 250-12-13</p>
+                        <p>АО «БИЛАНТЛИЯ»</p>
+                        <p>vvo@rentmotors.ru</p>
+                        <p>+7 (963) 761-62-68</p>
+                    </div>
+
+                    <h3 class="mt-5" id="item-2">Автобусы</h3>
+                    <h5 class="px-4 mt-4" id="item-2-1">Владивосток</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>№ 107 - 08:15, 12:30, 15:55 - до ж/д вокзала. Информацию о движении автобусов №107 можно получить по телефону: +7 (966) 277-20-60 – круглосуточная диспетчерская служба.</li>
+                            <li>№ 506 (ежедневно) - 09:45, 12:45 - до ж/д вокзала</li>
+                            <li>№ 506 (понедельник - пятница) - 08:05, 08:35, 09:05, 11:05, 13:05, 14:05 - до ж/д вокзала</li>
+                            <li>№ 502 - 05:00, № 501 - 07:45, № 520 - 08:43, № 503 - 17:32 - до Автовокзала.</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-2">Находка</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>№ 601 - 10:10, 15:50, 18:45, 20:02</li>
+                            <li>№ 600 - 11:25, № 609 - 14:22</li>
+                            <li>№ 506 ежедневно - 15:35, 16:35; понед. - пятн. - 13:25, 14:25, 15:05, 16:05, 17:35, 18:55</li>
+                            <li>От автовокзала г. Артема в г. Находка отправление каждые 30 минут с 07:30 до 20:30.</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-3">Уссурийск</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>07:50 (№ 552)</li>
+                            <li>10:30 (№555)</li>
+                            <li>11:07 (№601)</li>
+                            <li>13:57 (№601)</li>
+                            <li>14:50 (№552)</li>
+                            <li>15:40 (№601)</li>
+                            <li>19:25 (№601)</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-4">Арсеньев</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>13:52 (№520)</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-5">Большой Камень</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>15:10 (№ 555)</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-6">Спасск-Дальний</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>12:06 (№ 609)</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-2-7">Дальнегорск</h5>
+                    <div class="px-5 my-3">
+                        <p>
+                        <ul>
+                            <li>09:08 (№ 503 - еж. из г. Владивосток через г. Уссурийск)</li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <h3 class="mt-5" id="item-3">Парковки</h3>
+                    <img class="px-5 rounded-5 mt-3" style=" width: 80%; border: 3px solid #242424;" src="{{ '../../media/parking.jfif' }}" alt="">
+
+                    <h3 class="mt-5" id="item-4">Электропоезда</h3>
+                    <div class="px-5 my-3 mt-3">
+                        <p>Внимание! Информация справочная! Информацию об оперативных изменениях в расписании электропоездов, пожалуйста, уточняйте в справочной службе ОАО «Экспресс Приморья» по пригородным электропоездам по телефонам:</p>
+                        <ul>
+                            <li>+7 (423) 224-54-31</li>
+                            <li>+7 (800) 775-00-00</li>
+                        </ul>
+                        <a class="text-decoration-none text-black fw-bolder" href="http://expresspk.ru/" target="_blank">РЖД перевозки</a>
+                        <p>Время отправления и прибытия всех электропоездов местное.</p>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-4-1">Из Владивостока в Аэропорт Кневичи</h5>
+                    <div class="mt-3 mb-5">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Маршрут следования</th>
+                                <th scope="col">Отправление Владивосток</th>
+                                <th scope="col">Прибытие Первая Речка</th>
+                                <th scope="col">Прибытие Моргородок</th>
+                                <th scope="col">Прибытие Вторая Речка</th>
+                                <th scope="col">Прибытие Угольная</th>
+                                <th scope="col">Прибытие Артём</th>
+                                <th scope="col">Прибытие Аэропорт Владивосток</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Владивосток - Аэропорт № 7101</td>
+                                <td>07:09</td>
+                                <td>07:15</td>
+                                <td>07:19</td>
+                                <td>07:23</td>
+                                <td>07:44</td>
+                                <td>07:57</td>
+                                <td>08:03</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Владивосток - Аэропорт № 7103</td>
+                                <td>09:00</td>
+                                <td>09:06</td>
+                                <td>09:10</td>
+                                <td>09:14</td>
+                                <td>09:35</td>
+                                <td>09:48</td>
+                                <td>09:54</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Владивосток - Аэропорт № 7105</td>
+                                <td>11:50</td>
+                                <td>11:56</td>
+                                <td>12:00</td>
+                                <td>12:04</td>
+                                <td>12:25</td>
+                                <td>12:38</td>
+                                <td>12:44</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Владивосток - Аэропорт № 7107</td>
+                                <td>16:20</td>
+                                <td>16:26</td>
+                                <td>16:30</td>
+                                <td>16:34</td>
+                                <td>16:55</td>
+                                <td>17:08</td>
+                                <td>17:14</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Владивосток - Аэропорт № 7109</td>
+                                <td>18:00</td>
+                                <td>18:06</td>
+                                <td>18:10</td>
+                                <td>18:14</td>
+                                <td>18:35</td>
+                                <td>18:48</td>
+                                <td>18:54</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h5 class="px-4 mt-4" id="item-4-2">Из Аэропорта Кневичи во Владивосток:</h5>
+                    <div class="mt-3 mb-5">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Маршрут следования</th>
+                                <th scope="col">Отправление Аэропорт Владивосток</th>
+                                <th scope="col">Прибытие Артём</th>
+                                <th scope="col">Прибытие Угольная</th>
+                                <th scope="col">Прибытие Вторая Речка</th>
+                                <th scope="col">Прибытие Моргородок</th>
+                                <th scope="col">Прибытие Первая Речка</th>
+                                <th scope="col">Прибытие Владивосток</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Аэропорт - Владивосток № 7201</td>
+                                <td>07:43</td>
+                                <td>07:49</td>
+                                <td>08:02</td>
+                                <td>08:23</td>
+                                <td>08:26</td>
+                                <td>08:30</td>
+                                <td>08:37</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Аэропорт - Владивосток № 7203</td>
+                                <td>08:33</td>
+                                <td>08:39</td>
+                                <td>08:52</td>
+                                <td>09:13</td>
+                                <td>09:16</td>
+                                <td>09:20</td>
+                                <td>09:27</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Аэропорт - Владивосток № 7205</td>
+                                <td>10:40</td>
+                                <td>10:46</td>
+                                <td>10:59</td>
+                                <td>11:20</td>
+                                <td>11:23</td>
+                                <td>11:27</td>
+                                <td>11:34</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Аэропорт - Владивосток № 7207</td>
+                                <td>13:40</td>
+                                <td>13:46</td>
+                                <td>13:59</td>
+                                <td>14:20</td>
+                                <td>14:23</td>
+                                <td>14:27</td>
+                                <td>14:34</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Аэропорт - Владивосток № 7209</td>
+                                <td>17:45</td>
+                                <td>17:51</td>
+                                <td>18:04</td>
+                                <td>18:25</td>
+                                <td>18:28</td>
+                                <td>18:32</td>
+                                <td>18:39</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 id="item-5">Такси</h3>
+                    <div class="px-5 my-3 mt-3">
+                        <p>Официальный перевозчик ООО "АПРИОРИ"</p>
+                        <p>Стойка для заказа такси расположена на 1-м этаже на выходе из здания аэровокзала</p>
+                        <p>Телефон для заказа: +7(423)288-88-00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

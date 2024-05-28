@@ -1,0 +1,17 @@
+.linkMenuItems {
+    border-radius: 7px;
+    transition: 250ms;
+    color: #242424;
+}
+
+.linkMenuItems.active {
+    border-radius: 12px;
+    color: #FFFFFF;
+    background-color: #0d51fd;
+}
+
+.linkMenuItems:hover {
+    border-radius: 12px;
+    color: #FFFFFF;
+    background-color: #0d6efd;
+}

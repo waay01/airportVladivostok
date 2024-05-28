@@ -1,0 +1,123 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block scoreboard %}
+    <div class="container flightBox">
+        <a class="flightLink" href="?type=DEP">Вылет</a> <!-- onclick="toggleActiveFlight(this); return false;" -->
+        <a class="flightLink" href="?type=ARR">Прилет</a> <!-- onclick="toggleActiveFlight(this); return false;" -->
+    </div>
+    <div class="container d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <a class="text-decoration-none text-black fw-medium me-3" href="">Все рейсы</a>
+            {% for date in DateList %}
+                <button class="dateTime text-decoration-none text-black fw-medium me-3" onclick="toggleActive(this)">{{ date|date:"j E" }}</button>
+            {% endfor %}
+        </div>
+{#        <form role="search" style="width: 25%;">#}
+{#            <div class="input-container">#}
+{#                <input class="form-control inputCustom" type="search" aria-label="Search">#}
+{#                <span class="border-animationCus"></span>#}
+{#            </div>#}
+{#        </form>#}
+    </div>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-end">
+            <a class="fw-bold text-decoration-none flightLink d-flex align-items-center" style="font-size: 0.8rem;"
+               href="https://www.flightradar24.com/simple?&airport_filter=VVO:inout#"
+               target="_blank">
+                <span>Все рейсы на FlightRadar24.com</span></a>
+        </div>
+    </div>
+    <div class="container mt-5" id="reload">
+        <div class="d-flex justify-content-between flex-row font-monospace fs-5 mb-4">
+            <p>Время вылета</p>
+            <p style="display: none">Дата</p>
+            <p>Направление</p>
+            <p>Рейс</p>
+            <p>Авиакомпания</p>
+            <p>Терм.</p>
+            <p>Выход</p>
+            <p>Статус</p>
+        </div>
+
+        {% for item in airplanesList %}
+            <a href="/flight/{{ item.id }}/" data-flight-id="{{ item.id }}" class="flight-link linkTrip justify-content-between align-items-center flex-row mt-3 fs-5 px-2 rounded-3 fw-medium">
+                <div class="change d-flex flex-column">
+                    {% if item.id_status_id == 10 %}
+                        <s style="color: #606366; font-size: 15px">{{ item.scheduledTimeDep }}</s>
+                        <b style="color: red; font-size: 18px">{{ item.expectedTimeDep }}</b>
+                        <b style="color: red; font-size: 15px">{{ item.expectedDateDep|date:"j E" }}</b>
+                    {% else %}
+                        <p>{{ item.scheduledTimeDep }}</p>
+                    {% endif %}
+                </div>
+                <p class="scheduledDateDep" style="display: none">{{ item.scheduledDateDep|date:"j E" }}</p>
+                <p>{{ item.id_direction.nameAirport }}</p>
+                <p>{{ item.flightNumber }}</p>
+                <p>{{ item.id_airlines.nameAirlines }}</p>
+                <p>{{ item.id_terminal }}</p>
+                <div class="d-flex w-100">
+                    <p class="p-2 m-0 gate text-center">{{ item.gate }}</p>
+                </div>
+                <div class="change d-flex flex-column">
+                    {% if item.id_status_id == 11 %}
+                        <p>{{ item.id_status }}</p>
+                        <p style="color: #484a4d; font-size: 15px">Стойки(а): {{ item.receptionDesks }}</p>
+                    {% else %}
+                        <p>{{ item.id_status }}</p>
+                    {% endif %}
+                </div>
+            </a>
+        {% empty %}
+            <h1 class="text-center mt-5 no-flights-message" style="display: block;">Рейсы не выполняются.</h1>
+        {% endfor %}
+
+        <div class="toast position-fixed bottom-0 end-0 m-3" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Уведомление о рейсе</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-body">
+                Статус рейсов изменился.
+            </div>
+        </div>
+
+        {#        сделать скрытие div рейсы не выполняются#}
+        <script>
+            function toggleActive(element) {
+                let anyMatches = false;
+                let dateElements = document.querySelectorAll('.dateTime');
+                let scheduledTimeDepList = document.querySelectorAll('.linkTrip');
+                for (let i = 0; i < dateElements.length; i++)
+                    dateElements[i].classList.remove('activeDate');
+
+                element.classList.add('activeDate');
+
+                {% for item in airplanesList %}
+                    for (let i = 0; i < scheduledTimeDepList.length; ++i) {
+                        if (element.textContent.trim() === scheduledTimeDepList[i].querySelector('.scheduledDateDep').textContent.trim()) {
+                            scheduledTimeDepList[i].style.display = "Flex";
+                            anyMatches = true;
+                        } else {
+                            scheduledTimeDepList[i].style.display = "None";
+                        }
+                    }
+                {% endfor %}
+                if (anyMatches) {
+                    document.querySelector('.no-flights-message').style.display = "block";
+                }
+            }
+
+            {% if notification %}
+                window.onload = function () {
+                    const toastLiveExample = document.getElementById('liveToast');
+                    if (toastLiveExample) {
+                        const toast = new bootstrap.Toast(toastLiveExample);
+                        toast.show();
+                    }
+                };
+            {% endif %}
+
+        </script>
+    </div>
+{% endblock %}

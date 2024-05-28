@@ -1,0 +1,81 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block foodRetail %}
+    <div class="container mt-4">
+
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4 retail-content" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Еда</h1>
+        <h1 class="m-4 food-content" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Магазины</h1>
+
+        <div class="row">
+            <div class="col-3">
+                <div class="navbar-light bg-light flex-column">
+                    <div class="nav flex-column" style="background-color: #D2D2D2; border-radius: 12px; padding: 5px">
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#" id="retailLink">Еда</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5" href="#" id="foodLink">Магазины</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div class="retail-content">
+                    <div class="row">
+                        {% for item in foodList %}
+                            <div class="col-md-6 col-lg-4 col-xl-4 my-4">
+                                <div class="cardFlip">
+                                    <div class="front text-black">
+                                        <img class="w-100 h-auto" src="{{ item.imgPoster.url }}">
+                                        <div class="TitleFront">
+                                            <h4 class="mb-0">{{ item.title }}</h4>
+                                            <div>
+                                                <p class="mb-0">Часы работы: {{ item.timeWork }}</p>
+                                                <p class="mb-0">{{ item.id_place.placeName }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <p>{{ item.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="food-content">
+                    <div class="row">
+                        {% for item in retailList %}
+                            <div class="col-md-6 col-lg-4 col-xl-4 my-4">
+                                <div class="cardFlip">
+                                    <div class="front text-black">
+                                        <img class="w-100 h-auto" src="{{ item.imgPoster.url }}">
+                                        <div class="TitleFront">
+                                            <h4 class="mb-0">{{ item.title }}</h4>
+                                            <div>
+                                                <p class="mb-0">Часы работы: {{ item.timeWork }}</p>
+                                                <p class="mb-0">{{ item.id_place.placeName }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="back">
+                                        <p>{{ item.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

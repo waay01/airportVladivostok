@@ -1,0 +1,80 @@
+{% extends '../products/base.html' %}
+{#{% extends '../products/passengersBase.html' %}#}
+{% load static %}
+
+{% block news %}
+    {#    <div class="container my-5">#}
+    {#        <div class="row">#}
+    {#            <div class="col-3">#}
+    {#                <div class="navbar-light bg-light flex-column">#}
+    {#                    <div class="nav flex-column" style="background-color: #D2D2D2; border-radius: 12px; padding: 5px">#}
+    {#                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="/passengers/about/">Общество</a>#}
+    {#                        <div class="nav flex-column">#}
+    {#                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">О компании</a>#}
+    {#                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Пресс-центр</a>#}
+    {#                            <div class="nav flex-column">#}
+    {#                                <a class="nav-link ms-3 mb-1 linkMenuItems" href="/passengers/news/">Новости</a>#}
+    {#                                <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Медиа</a>#}
+    {#                                <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Для СМИ</a>#}
+    {#                                <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Публикации о нас</a>#}
+    {#                                <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Контакты пресс-центра</a>#}
+    {#                            </div>#}
+    {#                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Карьера</a>#}
+    {#                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Преимущества аэропорта</a>#}
+    {#                            <a class="nav-link ms-3 mb-1 linkMenuItems" href="#">Аэропорт Внуково в годы Великой Отечественной войны</a>#}
+    {#                            <a class="nav-link linkMenuItems fw-bolder fs-5" href="#">Контакты</a>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+
+    <div class="container mt-4 d-flex flex-column">
+        <div class="fw-medium mb-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            {% for item in newsList %}
+                <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                    <a href="{{ item.id }}" class="card card-link rounded-4">
+                        <div class="card-link rounded-4">
+                            <img src="{{ item.imgPoster.url }}" class="card-img-top" alt="card-grid-image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title }}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <ul class="pagination" id="pagination">
+                <!-- Ссылка на предыдущую страницу -->
+                {% if newsList.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">Первая</a>
+                    </li>
+                {% endif %}
+
+                <!-- Ссылки на страницы -->
+                {% for num in newsList.paginator.page_range %}
+                    <li class="page-item{% if num == newsList.number %} active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+
+                <!-- Ссылка на следующую страницу -->
+                {% if newsList.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ newsList.paginator.num_pages }}">Последняя</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

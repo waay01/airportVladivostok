@@ -1,0 +1,28 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block newsPage %}
+    <div class="container mt-4 d-flex flex-column justify-content-between">
+        <div class="fw-medium mb-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <h2 class="">{{ newsPageList.title }}</h2>
+        <div class="d-flex fs-6 fw-medium mb-3">
+            <span class="me-5">{{ newsPageList.dateTime|date:"d/m/Y" }}</span> <span>{{ newsPageList.dateTime|time:"H:i" }}</span>
+        </div>
+        <div class="d-flex">
+            <div class="mb-3 d-flex">
+                <div class="d-flex flex-column align-items-center">
+                    <img src="{{ newsPageList.imgPoster.url }}" class="card-img-top rounded-4 mb-3" alt="card-grid-image" style="width: 90%; height: 50%">
+                    <div class="card-body">
+                        <p class="fs-5">{{ newsPageList.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block wifi %}
+    <div class="container mt-4">
+
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <img src="{{ '../../media/wifi.jpg' }}" alt="">
+    </div>
+
+{% endblock %}

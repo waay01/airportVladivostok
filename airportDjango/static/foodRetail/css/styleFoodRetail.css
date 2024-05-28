@@ -1,0 +1,53 @@
+.cardFlip {
+    cursor: pointer;
+    width: 100%;
+    height: 401px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.front,
+.back {
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: ease-in-out 600ms;
+    border: 2px solid #9EA9B7;
+}
+
+.front {
+    background-size: cover;
+    overflow: hidden;
+}
+
+.back {
+    transform: rotateY(-180deg);
+    padding: 1.5rem;
+    overflow: auto;
+}
+
+.TitleFront {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+}
+
+.cardFlip:hover .front {
+    transform: rotateY(180deg);
+}
+
+.cardFlip:hover .back {
+    transform: rotateY(0deg);
+}

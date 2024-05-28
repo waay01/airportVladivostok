@@ -1,0 +1,108 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block inquiryServices %}
+    <div class="container mt-4">
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4" style="font-size: calc(1px + (260 - 70) * (60vw - 320 * 1px)/ (1920 - 320));">Услуги информационной справочной</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Вид предоставляемой услуги</th>
+                <th scope="col">Единица измерения</th>
+                <th scope="col">Стоимость, руб.</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Стоимость объявления коммерческого характера с помощью системы звукового оповещения аэровокзального комплекса (Терминала А)</td>
+                <td align="center">руб/объявление/2 повтора</td>
+                <td align="center">300</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Тариф за изготовление ксерокопии документа формата А4</td>
+                <td align="center">руб/за 1 лист</td>
+                <td align="center">60</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Выдача справки о наличии/отсутствии рейса по определенному маршруту (Владивосток-_______)</td>
+                <td align="center">руб/шт</td>
+                <td align="center">500</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Тарифы за услуги обработки и отправки документов на почту клиента</td>
+                <td align="center">
+                    руб/до 5 листов<br>
+                    руб/до 10 листов<br>
+                    руб/до 30 листов
+                </td>
+                <td align="center">
+                    300<br>
+                    500<br>
+                    800
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>Распечатка документов с почты клиента</td>
+                <td align="center">
+                    руб/до 5 листов<br>
+                    руб/до 10 листов<br>
+                    руб/до 30 листов
+                </td>
+                <td align="center">
+                    300<br>
+                    400<br>
+                    700
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>Оформление таблички с ФИО пассажира</td>
+                <td align="center">руб/лист</td>
+                <td align="center">160</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td>Предоставление справки пассажиру, подтверждающей факт вылета этого пассажира из аэропорта Владивосток</td>
+                <td align="center">руб/справка</td>
+                <td align="center">500</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td>Тариф за распечатывание посадочного талона пассажиру без багажа, зарегистрированному on-line, прибывшему после окончания регистрации</td>
+                <td align="center">руб/услуга</td>
+                <td align="center">300</td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td>Тариф за распечатывание документов с WhatsApp клиента</td>
+                <td align="center">
+                    руб/до 5 листов<br>
+                    руб/до 15 листов<br>
+                    руб/до 30 листов
+                </td>
+                <td align="center">
+                    250<br>
+                    380<br>
+                    700
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}

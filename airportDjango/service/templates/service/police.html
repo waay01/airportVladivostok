@@ -1,0 +1,33 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block police %}
+    <div class="container mt-4">
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Полиция</h1>
+
+        <div class="content">
+            <p>На территории аэровокзального комплекса аэропорта Владивосток круглосуточно несут службу сотрудники полиции.</p>
+
+            <p>В случае возникновения проблем Вы можете обратиться в дежурную часть линейного отдела внутренних дел. Дежурная часть ЛОВД расположена на втором этаже аэровокзала.</p>
+
+            <p>Контактные телефоны: +7 (423) 230-67-52, +7 (423) 260-64-70.</p>
+        </div>
+    </div>
+    ㅤ
+    ㅤ
+    ㅤ
+    ㅤ
+    ㅤ
+    ㅤ
+    ㅤ
+    ㅤ
+
+{% endblock %}

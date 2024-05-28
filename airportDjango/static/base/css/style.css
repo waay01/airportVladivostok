@@ -1,0 +1,117 @@
+@import '_normalize.css';
+
+/*Навигация*/
+.navBackground {
+    background-color: #242424;
+}
+
+.navItem {
+    border-radius: 8px;
+    transition: 250ms;
+}
+
+.navItem:hover {
+    background-color: #ffffff2f;
+    border-radius: 12px;
+}
+
+.profileItem {
+    transition: 250ms;
+}
+
+.profileItem:hover {
+    background-color: #dddddd;
+    border-radius: 8px;
+}
+
+/*Боковое меню*/
+.linkMenuItems {
+    border-radius: 7px;
+    transition: 250ms;
+    color: #242424;
+}
+
+.linkMenuItems.active {
+    border-radius: 12px;
+    color: #FFFFFF;
+    background-color: #0d51fd;
+}
+
+.linkMenuItems:hover {
+    border-radius: 12px;
+    color: #FFFFFF;
+    background-color: #0d6efd;
+}
+
+/* Крошки */
+.breadcrumbs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+.breadcrumbsItem {
+    display: inline-block;
+    position: relative;
+    margin-right: 4px;
+}
+
+.breadcrumbsItem > a {
+    color: #242424;
+    text-decoration: none;
+    transition: 250ms;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.breadcrumbsItem > a:hover {
+    background-color: #d2d2d2;
+}
+
+.breadcrumbsItem:after {
+    content: "/";
+    margin-left: 4px;
+    color: #6c757d;
+}
+
+.breadcrumbsItem:last-child:after {
+    content: "";
+}
+
+
+/*Футер*/
+.footerText {
+    background-color: #242424;
+    color: #fff;
+    font-weight: 500;
+}
+
+
+.parallax {
+    overflow: hidden;
+    position: relative;
+}
+
+.parallax > * {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.text-start {
+    transform: translateY(0);
+    transition: transform 0.4s ease; /* Скорость анимации */
+}
+
+#text1 {
+    transform: translateY(0); /* Начальное положение текста 1 */
+}
+
+#text2 {
+    transform: translateY(0); /* Начальное положение текста 2 */
+}

@@ -1,0 +1,35 @@
+.collapsible {
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    border-radius: 12px;
+    transition: 250ms;
+}
+
+.active {
+    background-color: #6D9E6D;
+}
+
+.collapsible:hover {
+    background-color: #7CAF7C;
+}
+
+#arrow {
+    transition: transform 0.3s ease;
+}
+
+.active #arrow {
+    transform: rotate(0deg);
+}
+
+.content {
+    padding: 0 18px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+

@@ -1,0 +1,117 @@
+.flightBox {
+    white-space: nowrap;
+    font-size: calc(32 * 1px + (160 - 32) * (100vw - 320 * 1px) / (1920 - 320));
+    margin-bottom: 3vh;
+    font-weight: 500;
+}
+
+.flightLink {
+    text-decoration: none;
+    color: #242424;
+    transition: 350ms;
+    border: 0;
+    background-color: transparent;
+}
+
+.flightLink:hover {
+    color: #7caf7c;
+}
+
+.activeFlight {
+    color: #6d9e6d !important;
+}
+
+.dateTime {
+    background-color: transparent;
+    border: 0;
+}
+
+.container > * > p {
+    margin: 1rem 0;
+    width: 105%;
+    box-sizing: border-box;
+}
+
+.change {
+    margin: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.change > * {
+    margin: 0;
+}
+
+.activeDate {
+    text-decoration: solid underline #6d9e6d 3px !important;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.inputCustom {
+    border: 0;
+    border-radius: 0px;
+    border-bottom: 2px solid #242424;
+    transition: black 200ms;
+    width: 100%;
+}
+
+.inputCustom:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.border-animationCus {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #6d9e6d;
+    transition: width 150ms ease-in-out;
+}
+
+.inputCustom:focus + .border-animationCus {
+    width: 100%;
+}
+
+.linkTrip {
+    transition: 250ms;
+    background-color: #f3faf4;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    border-top: 1px solid #242424;
+    border-bottom: 3px solid #242424;
+}
+
+.linkTrip:hover {
+    background-color: #e0e1e5;
+}
+
+.gate {
+    color: #152233;
+    font-weight: 800;
+    font-size: 22px;
+    border: 1px solid #FFC400FF;
+    background-color: #FFC400FF;
+    min-width: 50px;
+    border-radius: 14px;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    /*animation: fadeOut 1s ease-in forwards;*/
+}

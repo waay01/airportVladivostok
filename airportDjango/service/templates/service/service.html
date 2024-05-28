@@ -1,0 +1,86 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block service %}
+    <div class="container mt-4">
+
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <h3>Багаж</h3>
+                <ul>
+                    <li><a href="/service/luggage/">Все про багаж</a></li>
+                    <li><a href="/service/baggageServices/">Упаковка и хранение багажа</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Онлайн</h3>
+                <ul>
+                    <li><a href="/service/wifi/">Wi-Fi</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Транспорт</h3>
+                <ul>
+                    <li><a href="/service/transport/#item-1">Аренда автомобиля</a></li>
+                    <li><a href="/service/transport/#item-2">Автобусы</a></li>
+                    <li><a href="/service/transport/#item-3">Парковки</a></li>
+                    <li><a href="/service/transport/#item-4">Электропоезда</a></li>
+                    <li><a href="/service/transport/#item-5">Такси</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Особые категории пассажиров</h3>
+                <ul>
+                    <li><a href="/service/limitedMobility/">Маломобильные пассажиры</a></li>
+                    <li><a href="/service/childcareService/">Обслуживание пассажиров с детьми</a></li>
+                    <li><a href="/service/unaccompaniedMinors/">Обслуживание несопровождаемых детей</a></li>
+                    <li><a href="/service/transitAssistance/">Обслуживание транзитных и трансферных пассажиров</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <h3>Ожидание</h3>
+                <ul>
+                    <li><a href="/service/fastTrack/">Fast Track</a></li>
+                    <li><a href="/service/vipHall/">VIP-залы</a></li>
+                    <li><a href="/service/waitingRoom/">Залы повышенной комфортности</a></li>
+                    <li><a href="/service/comfortableArea/">Зона комфортного ожидания</a></li>
+                    <li><a href="/service/motherChildRoom/">Комнаты матери и ребёнка</a></li>
+                    <li><a href="/service/foodRetail/">Еда и магазины</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Медицина</h3>
+                <ul>
+                    <li><a href="/service/medicalCare/">Медицинская помощь</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Экстренные ситуации</h3>
+                <ul>
+                    <li><a href="/service/police/">Полиция</a></li>
+                    <li><a href="/service/emergencies/">Чрезвычайные ситуации</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Прочие услуги</h3>
+                <ul>
+                    <li><a href="/service/inquiryServices/">Услуги информационной справочной</a></li>
+                    <li><a href="/service/eDeclaration/">Электронная таможенная декларация</a></li>
+                    <li><a href="/service/checkInServices/">Дополнительные услуги, оказываемые на стойках регистрации</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+a {
+    text-decoration: none;
+    color: black;
+    transition: 350ms;
+}
+
+a:hover {
+    color: #6d9e6d;
+    transition: 350ms;
+}
+
+li {
+    list-style-type: none;
+}
+
+.col-md-3 > ul {
+    padding-left: 0;
+    font-size: 18px;
+}

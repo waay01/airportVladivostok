@@ -1,0 +1,19 @@
+.choose {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    margin: 0 1rem 0 0;
+    transition: 250ms;
+}
+
+.choose:hover {
+    color: #7caf7c;
+}
+
+.activeChoose {
+    color: #6d9e6d !important;
+}
+
+.two, .three, .four, .five{
+    display: none;
+}

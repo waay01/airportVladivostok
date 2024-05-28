@@ -1,0 +1,29 @@
+{% extends '../products/base.html' %}
+{% load static %}
+
+{% block comfortableArea %}
+    <div class="container mt-4">
+        <div class="fw-medium m-3">
+            <ul class="breadcrumbs">
+                {% for crumb in breadcrumbs %}
+                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 class="m-4" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Зона комфортного ожидания</h1>
+
+        <div class="content">
+            <p>Зона комфортного ожидания открыта с целью комфортного пребывания пассажиров в терминале аэропорта Владивосток.</p>
+
+            <p>Уютные номера оснащены кроватями, телевизором, розетками, зеркалами, стульями и вешалками для одежды. Капсулы представляют собой комфортные кресла, где можно спокойно отдохнуть во время авиапутешествия через воздушную гавань. Также в зоне ожидания оборудованы пять душевых комнат. На территории всей зоны комфортного ожидания есть доступ к бесплатному Wi-Fi.</p>
+
+            <p>Зона ожидания расположена на 3-м этаже аэровокзального комплекса.</p>
+
+            <p>Более подробную информацию Вы можете уточнить по телефону: +7 (984) 153-70-83 или по электронной почте: vististay@gmail.com</p>
+
+            <img class="rounded-4 my-3" style="width: 45%;" src="{{ '../../media/comfortableArea/1.jpg' }}" alt="">
+            <img class="rounded-4 my-3" style="width: 45%;" src="{{ '../../media/comfortableArea/2.jpg' }}" alt="">
+        </div>
+    </div>
+{% endblock %}
