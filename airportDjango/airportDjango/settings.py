@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'products',
     'news',
     'passengers',
-    'scoreboard',
     'service'
 ]
 

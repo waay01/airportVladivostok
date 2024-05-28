@@ -46,21 +46,3 @@ class DirectionsAdmin(admin.ModelAdmin):
     list_display = ('IATA', 'city', 'nameAirport', 'country', 'utc')
     ordering = ('city',)
     search_fields = ('city',)
-
-
-@admin.register(Places)
-class PlacesAdmin(admin.ModelAdmin):
-    list_display = ('placeName',)
-    ordering = ('placeName',)
-
-
-@admin.register(Shops)
-class ShopsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id_place', 'timeWork')
-    ordering = ('title',)
-
-
-@admin.register(Foods)
-class FoodsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'id_place', 'timeWork')
-    ordering = ('title',)

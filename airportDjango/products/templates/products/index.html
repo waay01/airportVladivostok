@@ -60,7 +60,7 @@
                                 active
                             {% endif %}">
                                 <a href="" target="_blank">
-                                    <img class="d-block rounded-4 w-100 h-25" src={{ item.imgPoster.url }}>
+                                    <img class="d-block rounded-4 w-100 h-25" src={{ item.news_id.imgPoster.url }}>
                                 </a>
                             </div>
                         {% endfor %}
@@ -83,9 +83,9 @@
                             {% endif %}">
                         <a class="text-decoration-none" href=""
                            style="color: #6d9e6d;">
-                            <h1 class="m-0">{{ item.title }}</h1>
+                            <h1 class="m-0">{{ item.news_id.title }}</h1>
                         </a>
-                        <div class="subtitle fw-light fs-5 mt-2">{{ item.description }}</div>
+                        <div class="subtitle fw-light fs-5 mt-2">{{ item.news_id.description }}</div>
                     </div>
                 {% endfor %}
                 <div class="w-100">

@@ -23,7 +23,6 @@ from products.views import *
 from news.views import *
 from service.views import *
 from passengers.views import *
-from scoreboard.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),

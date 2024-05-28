@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from products.models import Shops, Foods
+from service.models import Shops, Foods
 
 
 def service(request):
