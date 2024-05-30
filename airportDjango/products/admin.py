@@ -43,6 +43,6 @@ class AirplanesAdmin(admin.ModelAdmin):
 
 @admin.register(Directions)
 class DirectionsAdmin(admin.ModelAdmin):
-    list_display = ('IATA', 'city', 'nameAirport', 'country', 'utc')
+    list_display = ('nameAirport', 'city', 'IATA', 'ICAO', 'country', 'utc')
     ordering = ('city',)
     search_fields = ('city',)

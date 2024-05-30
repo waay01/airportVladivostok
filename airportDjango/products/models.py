@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # Билеты, самолет
@@ -63,14 +64,10 @@ class Airplanes(models.Model):
         (DEPARTURE, 'Отправление')
     ]
 
-    scheduledDateDep = models.DateField(verbose_name="Запланированная дата вылета")
-    scheduledTimeDep = models.TimeField(verbose_name="Запланированная время вылета")
-    expectedDateDep = models.DateField(verbose_name="Фактическая дата вылета", null=True, blank=True)
-    expectedTimeDep = models.TimeField(verbose_name="Фактическая время вылета", null=True, blank=True)
-    scheduledDateArr = models.DateField(verbose_name="Запланированная дата прилета")
-    scheduledTimeArr = models.TimeField(verbose_name="Запланированная время прилета")
-    expectedDateArr = models.DateField(verbose_name="Фактическая дата прилета", null=True, blank=True)
-    expectedTimeArr = models.TimeField(verbose_name="Фактическая время прилета", null=True, blank=True)
+    scheduledDateDep = models.DateTimeField(verbose_name="Запланированная время/дата вылета")
+    expectedDateDep = models.DateTimeField(verbose_name="Фактическая дата время/вылета", null=True, blank=True)
+    scheduledDateArr = models.DateTimeField(verbose_name="Запланированная время/дата прилета")
+    expectedDateArr = models.DateTimeField(verbose_name="Фактическая дата время/прилета", null=True, blank=True)
     id_typeAirplane = models.ForeignKey(to='TypeAirplanes', on_delete=models.PROTECT, verbose_name="Модель самолета")
     id_direction = models.ForeignKey(to='Directions', on_delete=models.PROTECT, verbose_name="Направление (аэропорт)")
     id_airlines = models.ForeignKey(to='Airlines', on_delete=models.PROTECT, verbose_name="Авиакомпания")
@@ -92,14 +89,18 @@ class Airplanes(models.Model):
 class Directions(models.Model):
     country = models.CharField(verbose_name="Страна", max_length=255)
     city = models.CharField(verbose_name="Город", max_length=255)
-    nameAirport = models.CharField(verbose_name="Аэропорт", max_length=255)
-    utc = models.IntegerField(verbose_name="Часовой пояс")
-    IATA = models.CharField(verbose_name="IATA код", primary_key=True, unique=True, max_length=255)
+    nameAirport = models.CharField(verbose_name="Аэропорт", primary_key=True, unique=True, max_length=255)
+    utc = models.IntegerField(verbose_name="Часовой пояс (UTC)")
+    IATA = models.CharField(verbose_name="IATA код", unique=True, max_length=255)
     ICAO = models.CharField(verbose_name="ICAO код", unique=True, max_length=255)
     coordinates = models.CharField(verbose_name="Координаты", max_length=255)
 
+    def save(self, *args, **kwargs):
+        self.nameAirport = self.nameAirport.upper()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.IATA
+        return self.nameAirport
 
     class Meta:
         verbose_name = "Направление"
