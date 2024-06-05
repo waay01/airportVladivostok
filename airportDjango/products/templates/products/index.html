@@ -3,245 +3,329 @@
 
 {% block index %}
     <div class="parallax main-container">
-        {#        <video autoplay loop preload="auto">#}
-        {#            <source src="{{ 'media/video2.mp4' }}" type="video/mp4"/>#}
-        {#            Ваш браузер не поддерживает видео.#}
-        {#        </video>#}
-        <img src="{{ 'media/main2.jpg' }}" alt="">
     </div>
 
-    <div class="position-absolute" style="top: 10%; left: 5%">
-        <p class="text-start fw-medium text-white mb-0" id="text1"
-           style="font-size: calc(45 * 1px + (260 - 45) * (80vw - 320 * 1px)/ (1920 - 320));">
-            Владивосток
-        </p>
-        <p class="text-start fw-medium text-white ms-3" id="text2"
-           style="font-size: calc(45 * 1px + (260 - 45) * (14vw - 320 * 1px)/ (1920 - 320));">
-            Международный аэропорт имени В. К. Арсеньева
-        </p>
-    </div>
-
-
-    <div class="position-absolute d-flex" style="top: 80%; left: 8%">
-        <div class="d-flex flex-column">
-            <a class="text-start linkOnScoreboard text-decoration-none me-5" href="/scoreboard?type=DEP"
-               style="font-size: calc(45 * 1px + (260 - 45) * (18vw - 320 * 1px)/ (1920 - 320));">
-                Вылет
-                <svg height="64" viewBox="0 0 32 32" width="64" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                            d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"
-                            fill="#6d9e6d"/>
-                </svg>
-                <p class="text-white fs-6 fw-medium me-5">Вылетающим и провожающим</p>
-            </a>
+    <!-- Контейнер для ПК -->
+    <div class="main-container-pc d-none d-md-block">
+        <div class="position-absolute" style="top: 10%; left: 5%">
+            <p class="text-start fw-medium text-white mb-0" id="text1"
+               style="font-size: calc(45 * 1px + (260 - 45) * (80vw - 320 * 1px)/ (1920 - 320));">
+                Владивосток
+            </p>
+            <p class="text-start fw-medium text-white ms-3" id="text2"
+               style="font-size: calc(45 * 1px + (260 - 45) * (14vw - 320 * 1px)/ (1920 - 320));">
+                Международный аэропорт имени В. К. Арсеньева
+            </p>
         </div>
-        <div class="d-flex flex-column">
-            <a class="text-start linkOnScoreboard text-decoration-none mx-5" href="/scoreboard?type=ARR"
-               style="font-size: calc(45 * 1px + (260 - 45) * (18vw - 320 * 1px)/ (1920 - 320));">
-                Прилёт
-                <svg height="64" style="transform: rotateX(180deg);" viewBox="0 0 32 32" width="64"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path
-                            d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"
-                            fill="#6d9e6d"/>
-                </svg>
-                <p class="text-white fs-6 fw-medium">Прилетающим и встречающим</p>
-            </a>
-        </div>
-    </div>
-    <div class="container mt-5">
 
-        <div class="row" style="">
-            <div class="col-lg-8">
-                <div class="carousel slide" data-bs-ride="carousel" id="mainSlider">
-                    <div class="carousel-inner" style="">
-                        {% for item in carouselNewsList %}
-                            <div class="carousel-item {% if item.showNews == "SHOW" %}
-                                active
-                            {% endif %}">
-                                <a href="" target="_blank">
-                                    <img class="d-block rounded-4 w-100 h-25" src={{ item.news_id.imgPoster.url }}>
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <a class="carousel-control-prev" data-bs-slide="prev" href="#mainSlider" role="button">
-                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
-                        <span class="visually-hidden">Пред.</span>
-                    </a>
-                    <a class="carousel-control-next" data-bs-slide="next" href="#mainSlider" role="button">
-                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
-                        <span class="visually-hidden">След.</span>
-                    </a>
-                </div>
+        <div class="position-absolute d-flex" style="top: 75%; left: 8%">
+            <div class="d-flex flex-column">
+                <a class="text-start linkOnScoreboard text-decoration-none me-4" href="/scoreboard?type=DEP"
+                   style="font-size: calc(45 * 1px + (260 - 45) * (18vw - 320 * 1px)/ (1920 - 320));">
+                    Вылет
+                    <svg height="56" viewBox="0 0 32 32" width="64" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"
+                                fill="#6d9e6d"/>
+                    </svg>
+                    <p class="text-white fs-6 fw-medium me-4">Вылетающим и провожающим</p>
+                </a>
             </div>
-            <div class="col-lg-4 position-relative d-flex flex-column justify-content-between overflow-hidden">
-                {% for item in carouselNewsList %}
-                    <div class="fade-in-out description" id="description1" style="
-                            {% if item.showNews == "HIDE" %}
-                                display: none;
-                            {% endif %}">
-                        <a class="text-decoration-none" href=""
-                           style="color: #6d9e6d;">
-                            <h1 class="m-0">{{ item.news_id.title }}</h1>
-                        </a>
-                        <div class="subtitle fw-light fs-5 mt-2">{{ item.news_id.description }}</div>
-                    </div>
-                {% endfor %}
-                <div class="w-100">
-                    <a class="d-block fs-4 fw-medium w-100 text-decoration-none text-center linkNews" style="border-radius: 15px;" href="/news">Новости</a>
-                </div>
+            <div class="d-flex flex-column">
+                <a class="text-start linkOnScoreboard text-decoration-none mx-4" href="/scoreboard?type=ARR"
+                   style="font-size: calc(45 * 1px + (260 - 45) * (18vw - 320 * 1px)/ (1920 - 320));">
+                    Прилёт
+                    <svg height="56" style="transform: rotateX(180deg);" viewBox="0 0 32 32" width="64"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"
+                                fill="#6d9e6d"/>
+                    </svg>
+                    <p class="text-white fs-6 fw-medium">Прилетающим и встречающим</p>
+                </a>
             </div>
         </div>
 
-
-        <div class="my-5">
-            <div class="row row-cols-1 row-cols-sm-3 g-3">
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="/scoreboard?type=DEP">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Табло рейсов
-                            </div>
-
-                            <div class="itemBox">
-                                {#                                <span class="fw-bold">#}
-                                {#                                    {{ airplanesDepCount }}#}
-                                {#                                    <svg height="38" viewBox="0 0 32 32" width="38" xmlns="http://www.w3.org/2000/svg">#}
-                                {#                                        <path d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"#}
-                                {#                                              fill="#fff"/>#}
-                                {#                                    </svg>#}
-                                {#                                </span>#}
-                                {#                                &nbsp&nbsp#}
-                                {#                                <span class="fw-bold">#}
-                                {#                                    {{ airplanesArrCount }}#}
-                                {#                                    <svg height="38" style="transform: rotateX(180deg);" viewBox="0 0 32 32" width="38" xmlns="http://www.w3.org/2000/svg">#}
-                                {#                                        <path d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"#}
-                                {#                                              fill="#fff"/>#}
-                                {#                                    </svg>#}
-                                {#                                </span>#}
-                            </div>
+        <div id="desktopContent" class="container mt-5 d-none d-md-block">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="carousel slide" data-bs-ride="carousel" id="mainSliderDesktop">
+                        <div class="carousel-inner">
+                            {% for item in carouselNewsList %}
+                                <div class="carousel-item {% if item.showNews == "SHOW" %} active {% endif %}">
+                                    <a href="" target="_blank">
+                                        <img class="d-block rounded-4 w-100 h-25 news-image" src="{{ item.news_id.imgPoster.url }}">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" data-bs-slide="prev" href="#mainSliderDesktop" role="button">
+                            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Пред.</span>
+                        </a>
+                        <a class="carousel-control-next" data-bs-slide="next" href="#mainSliderDesktop" role="button">
+                            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">След.</span>
                         </a>
                     </div>
                 </div>
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="service/transport">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Транспорт
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
+                <div class="col-lg-4 position-relative d-flex flex-column justify-content-between overflow-hidden">
+                    {% for item in carouselNewsList %}
+                        <div class="fade-in-out description" id="descriptionDesktop{{ forloop.counter }}" style="{% if item.showNews == 'HIDE' %} display: none; {% endif %}">
+                            <a class="text-decoration-none" href="" style="color: #6d9e6d;">
+                                <h1 class="m-0">{{ item.news_id.title }}</h1>
+                            </a>
+                            <p class="subtitle fw-light fs-5 mt-2 truncate" id="textContainerDesktop{{ forloop.counter }}">{{ item.news_id.description }}</p>
+                        </div>
+                    {% endfor %}
+                    <div class="w-100">
+                        <a class="d-block fs-4 fw-medium w-100 text-decoration-none text-center linkNews" style="border-radius: 15px;" href="/news">Новости</a>
                     </div>
                 </div>
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="service/luggage">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Багаж
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
+            </div>
+            <div class="my-5">
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/scoreboard?type=DEP">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Табло рейсов
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/transport">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Транспорт
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/luggage">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Багаж
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/foodRetail">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Еда и магазины
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/news/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Новости
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/passengers/about/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    О нас
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/service/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Услуги
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="service/foodRetail">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Еда и магазины
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="/news/">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Новости
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                {#                <div class="col">#}
-                {#                    <div class="itemTables">#}
-                {#                        <a class="itemLink" href="settings/">#}
-                {#                            <div class="itemBg"></div>#}
-                {##}
-                {#                            <div class="itemTitle">#}
-                {#                                Настройки#}
-                {#                            </div>#}
-                {##}
-                {#                            <div class="itemBox">#}
-                {#                                <span class="fw-bold">ready</span>#}
-                {#                                &nbsp&nbsp#}
-                {#                            </div>#}
-                {#                        </a>#}
-                {#                    </div>#}
-                {#                </div>#}
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="/passengers/about/">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                О нас
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="itemTables">
-                        <a class="itemLink" href="/service/">
-                            <div class="itemBg"></div>
-
-                            <div class="itemTitle">
-                                Услуги
-                            </div>
-
-                            <div class="itemBox">
-                                <span class="fw-bold"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
+
+    <!-- Контейнер для мобильных устройств и планшетов -->
+    <div class="main-container-mobile d-md-none">
+        <div class="position-absolute" style="top: 38%; left: 8%">
+            <p class="text-start fw-medium text-white mb-0" id="text1" style="font-size: 54px;">
+                Владивосток
+            </p>
+        </div>
+
+
+        <div class="position-absolute d-flex" style="top: 75%; left: 8%">
+            <div class="d-flex flex-column">
+                <a class="text-start linkOnScoreboard text-decoration-none me-5" href="/scoreboard?type=DEP"
+                   style="font-size: 32px">
+                    Вылет
+                    {#                    <svg height="56" viewBox="0 0 32 32" width="64" xmlns="http://www.w3.org/2000/svg">#}
+                    {#                        <path#}
+                    {#                                d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"#}
+                    {#                                fill="#6d9e6d"/>#}
+                    {#                    </svg>#}
+                    <p class="text-white fs-6 fw-medium me-0">Вылетающим и провожающим</p>
+                </a>
+            </div>
+            <div class="d-flex flex-column">
+                <a class="text-start linkOnScoreboard text-decoration-none mx-0" href="/scoreboard?type=ARR"
+                   style="font-size: 32px">
+                    Прилёт
+                    {#                    <svg height="56" style="transform: rotateX(180deg);" viewBox="0 0 32 32" width="64"#}
+                    {#                         xmlns="http://www.w3.org/2000/svg">#}
+                    {#                        <path#}
+                    {#                                d="m12.25 8.719-.469.469 4 .344 2.406-2.406c.375-.375 1.063-.938 2.063-1.563S21.906 4.75 22.156 5c.688.688 0 2.031-2.063 4.063l-2.375 2.375.344 4 .469-.438c.375-.406.781-.406 1.094-.094.375.375.219.906-.531 1.656l-.75.781.375 2.688.531-.563c.344-.375.719-.375 1.063-.063.375.375.313.844-.188 1.344L19 21.874c.438 3 .5 4.688.156 5.031a1.57 1.57 0 0 1-.688.313c-.281.031-.531 0-.688-.125-.125-.156-.313-.719-.5-1.688-.219-1-.75-2.688-1.688-5.063-.906-2.406-1.563-3.75-1.875-4.094-.125-.125-.313-.125-.531 0-.219.094-1 .75-2.25 1.969-1.25 1.25-2.406 2.25-3.5 3.031-.031.188.063.813.219 1.844s.219 1.719.188 1.969c-.063.25-.313.594-.719 1-.219.219-.375.344-.531.375-.406-.406-1.031-1.719-1.875-3.875-2.344-1.031-3.625-1.688-3.875-1.938 0-.125.125-.313.344-.531.406-.406.75-.656 1.031-.688.25-.063.906.031 1.938.219 1.031.156 1.656.219 1.875.219.75-1.125 2.156-2.781 4.344-4.969.625-.688.813-1.125.594-1.344-.313-.344-1.688-.969-4.063-1.875-2.406-.906-4.063-1.5-5.063-1.688-1-.219-1.563-.375-1.688-.531-.156-.125-.188-.375-.125-.688.031-.313.156-.531.313-.688.313-.313 2-.281 5.031.156L6.468 7.09c.5-.469.969-.531 1.344-.156.344.313.313.688-.031 1.031l-.563.531 2.688.375.75-.719c.75-.75 1.281-.906 1.656-.531.344.344.313.688-.063 1.094z"#}
+                    {#                                fill="#6d9e6d"/>#}
+                    {#                    </svg>#}
+                    <p class="text-white fs-6 fw-medium">Прилетающим и встречающим</p>
+                </a>
+            </div>
+        </div>
+        <div class="container mt-5">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="carousel slide" data-bs-ride="carousel" id="mainSlider">
+                        <div class="carousel-inner">
+                            {% for item in carouselNewsList %}
+                                <div class="carousel-item {% if item.showNews == "SHOW" %} active {% endif %}">
+                                    <a href="" target="_blank">
+                                        <img class="d-block rounded-4 w-100 h-25 news-image" src="{{ item.news_id.imgPoster.url }}">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" data-bs-slide="prev" href="#mainSlider" role="button">
+                            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Пред.</span>
+                        </a>
+                        <a class="carousel-control-next" data-bs-slide="next" href="#mainSlider" role="button">
+                            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">След.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 position-relative d-flex flex-column justify-content-between overflow-hidden">
+                    {% for item in carouselNewsList %}
+                        <div class="fade-in-out description" id="description{{ forloop.counter }}" style="{% if item.showNews == 'HIDE' %} display: none; {% endif %}">
+                            <a class="text-decoration-none" href="" style="color: #6d9e6d;">
+                                <h1 class="m-0 fs-2">{{ item.news_id.title }}</h1>
+                            </a>
+                            <p class="fw-light fs-5 mt-2" id="textContainer{{ forloop.counter }}" style="-webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">{{ item.news_id.description }}</p>
+                        </div>
+                    {% endfor %}
+                    <div class="w-100">
+                        <a class="d-block fs-4 fw-medium w-100 text-decoration-none text-center linkNews" style="border-radius: 10px;" href="/news">Новости</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="my-5">
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/scoreboard?type=DEP">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Табло рейсов
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/transport">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Транспорт
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/luggage">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Багаж
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="service/foodRetail">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Еда и магазины
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/news/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Новости
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/passengers/about/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    О нас
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="itemTables">
+                            <a class="itemLink" href="/service/">
+                                <div class="itemBg"></div>
+                                <div class="itemTitle">
+                                    Услуги
+                                </div>
+                                <div class="itemBox"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
