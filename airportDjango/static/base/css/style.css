@@ -115,3 +115,9 @@
 #text2 {
     transform: translateY(0); /* Начальное положение текста 2 */
 }
+
+@media (max-width: 767px) {
+    .footerText {
+        text-align: center;
+    }
+}

@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class News(models.Model):
     title = models.CharField(verbose_name="Заголовок", max_length=255)
-    shortDescription = models.TextField(verbose_name="Описание")
+    shortDescription = models.TextField(verbose_name="Короткое описание")
     description = models.TextField(verbose_name="Описание")
     imgPoster = models.ImageField(verbose_name="Фото", upload_to='news')
     dateTime = models.DateTimeField(verbose_name="Дата/Время", default=timezone.now)

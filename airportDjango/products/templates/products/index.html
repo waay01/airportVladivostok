@@ -75,7 +75,7 @@
                             <a class="text-decoration-none" href="" style="color: #6d9e6d;">
                                 <h1 class="m-0">{{ item.news_id.title }}</h1>
                             </a>
-                            <p class="subtitle fw-light fs-5 mt-2 truncate" id="textContainerDesktop{{ forloop.counter }}">{{ item.news_id.description }}</p>
+                            <p class="subtitle fw-light fs-5 mt-2 truncate" id="textContainerDesktop{{ forloop.counter }}">{{ item.news_id.shortDescription }}</p>
                         </div>
                     {% endfor %}
                     <div class="w-100">
@@ -234,7 +234,7 @@
                             <a class="text-decoration-none" href="" style="color: #6d9e6d;">
                                 <h1 class="m-0 fs-2">{{ item.news_id.title }}</h1>
                             </a>
-                            <p class="fw-light fs-5 mt-2" id="textContainer{{ forloop.counter }}" style="-webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">{{ item.news_id.description }}</p>
+                            <p class="fw-light fs-5 mt-2" id="textContainer{{ forloop.counter }}" style="-webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;">{{ item.news_id.shortDescription }}</p>
                         </div>
                     {% endfor %}
                     <div class="w-100">

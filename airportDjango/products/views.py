@@ -56,41 +56,43 @@ def scoreboard(request):
     return render(request, 'products/scoreboard.html', context)
 
 
+from datetime import datetime, timedelta
+from django.shortcuts import render
+from .models import Airplanes
+
+
 def flight(request, flight_id):
     try:
         airplane = Airplanes.objects.get(id=flight_id)
 
-        scheduled_datetime_dep = datetime.combine(airplane.scheduledDateDep, airplane.scheduledTimeDep)
+        scheduled_datetime_dep = airplane.scheduledDateDep
 
         # Прибытие в аэропорт
         new_TFP = scheduled_datetime_dep - timedelta(hours=2.5)
-        timeForPassing = new_TFP.strftime("%H:%M")  # Отвечает за прибытие к аэропорту за 2.5 часа
+        timeForPassing = new_TFP.strftime("%H:%M")
 
         # Регистрация
         new_TR = scheduled_datetime_dep - timedelta(hours=1.33)
-        timeRegister = new_TR.strftime("%H:%M")  # Отвечает за регистрацию за 40 минут
+        timeRegister = new_TR.strftime("%H:%M")
 
         # Посадка в самолет
         new_TFL = scheduled_datetime_dep - timedelta(hours=1)
-        timeForLand = new_TFL.strftime("%H:%M")  # Отвечает за посадку в самолет за 1 час
+        timeForLand = new_TFL.strftime("%H:%M")
 
         # Время вылета
         new_TO = scheduled_datetime_dep + timedelta(hours=0.25)
         timeTakeoff = new_TO.strftime("%H:%M")
 
         if key_calcTimeSubScheduled:
-            scheduled_datetime_dep = datetime.combine(airplane.scheduledDateDep, airplane.scheduledTimeDep)
-            scheduled_datetime_arr = datetime.combine(airplane.scheduledDateArr, airplane.scheduledTimeArr)
-        elif not key_calcTimeSubScheduled:
-            expected_datetime_dep = datetime.combine(airplane.expectedDateDep, airplane.expectedTimeDep)
-            expected_datetime_arr = datetime.combine(airplane.expectedDateArr, airplane.expectedTimeArr)
-
-        # expected_datetime_arr = datetime.combine(airplane.expectedDateArr, airplane.expectedTimeArr, tzinfo=timezone_arr)
+            scheduled_datetime_arr = airplane.scheduledDateArr
+        else:
+            expected_datetime_arr = airplane.expectedDateArr
+            expected_datetime_dep = airplane.expectedDateDep
 
         # Расчет разницы во времени с учетом часовых поясов
         if key_calcTimeSubScheduled:
             new_TS = scheduled_datetime_arr - scheduled_datetime_dep
-        elif not key_calcTimeSubScheduled:
+        else:
             new_TS = expected_datetime_arr - expected_datetime_dep
 
         airplanes = Airplanes.objects.filter(id=flight_id)

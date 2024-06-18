@@ -3,37 +3,36 @@
 
 {% block foodRetail %}
     <div class="container mt-4">
-
         <div class="fw-medium m-3">
             <ul class="breadcrumbs">
                 {% for crumb in breadcrumbs %}
-                    <li class="breadcrumbsItem"><a class="" href="{{ crumb.url }}">{{ crumb.text }}</a></li>
+                    <li class="breadcrumbsItem"><a href="{{ crumb.url }}">{{ crumb.text }}</a></li>
                 {% endfor %}
             </ul>
         </div>
 
-        <h1 class="m-4 retail-content" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Еда</h1>
-        <h1 class="m-4 food-content" style="font-size: calc(1px + (260 - 45) * (60vw - 320 * 1px)/ (1920 - 320));">Магазины</h1>
+        <h1 class="m-4 retail-content" style="font-size: calc(1px + (260 - 45) * (60vw - 320px) / (1920 - 320));">Еда</h1>
+        <h1 class="m-4 food-content d-none" style="font-size: calc(1px + (260 - 45) * (60vw - 320px) / (1920 - 320));">Магазины</h1>
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-3 mb-4">
                 <div class="navbar-light bg-light flex-column">
-                    <div class="nav flex-column" style="background-color: #D2D2D2; border-radius: 12px; padding: 5px">
-                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1" href="#" id="retailLink">Еда</a>
-                        <a class="nav-link linkMenuItems fw-bolder fs-5" href="#" id="foodLink">Магазины</a>
+                    <div class="nav flex-column p-3" style="background-color: #D2D2D2; border-radius: 12px;">
+                        <a class="nav-link linkMenuItems fw-bolder fs-5 mb-1 active" href="#" id="retailLink" onclick="toggleContent('retail')">Еда</a>
+                        <a class="nav-link linkMenuItems fw-bolder fs-5" href="#" id="foodLink" onclick="toggleContent('food')">Магазины</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-9">
+            <div class="col-12 col-md-9">
                 <div class="retail-content">
                     <div class="row">
                         {% for item in foodList %}
-                            <div class="col-md-6 col-lg-4 col-xl-4 my-4">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4">
                                 <div class="cardFlip">
                                     <div class="front text-black">
                                         <img class="w-100 h-auto" src="{{ item.imgPoster.url }}">
-                                        <div class="TitleFront">
+                                        <div class="TitleFront p-3">
                                             <h4 class="mb-0">{{ item.title }}</h4>
                                             <div>
                                                 <p class="mb-0">Часы работы: {{ item.timeWork }}</p>
@@ -41,7 +40,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="back">
+                                    <div class="back p-3">
                                         <p>{{ item.description }}</p>
                                     </div>
                                 </div>
@@ -50,14 +49,14 @@
                     </div>
                 </div>
 
-                <div class="food-content">
+                <div class="food-content d-none">
                     <div class="row">
                         {% for item in retailList %}
-                            <div class="col-md-6 col-lg-4 col-xl-4 my-4">
+                            <div class="col-12 col-md-6 col-lg-4 mb-4">
                                 <div class="cardFlip">
                                     <div class="front text-black">
                                         <img class="w-100 h-auto" src="{{ item.imgPoster.url }}">
-                                        <div class="TitleFront">
+                                        <div class="TitleFront p-3">
                                             <h4 class="mb-0">{{ item.title }}</h4>
                                             <div>
                                                 <p class="mb-0">Часы работы: {{ item.timeWork }}</p>
@@ -65,7 +64,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="back">
+                                    <div class="back p-3">
                                         <p>{{ item.description }}</p>
                                     </div>
                                 </div>
@@ -74,8 +73,27 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
+    <script>
+        function toggleContent(type) {
+            let retailContent = document.querySelectorAll('.retail-content');
+            let foodContent = document.querySelectorAll('.food-content');
+            let retailLink = document.getElementById('retailLink');
+            let foodLink = document.getElementById('foodLink');
+
+            if (type === 'retail') {
+                retailContent.forEach(element => element.classList.remove('d-none'));
+                foodContent.forEach(element => element.classList.add('d-none'));
+                retailLink.classList.add('active');
+                foodLink.classList.remove('active');
+            } else {
+                retailContent.forEach(element => element.classList.add('d-none'));
+                foodContent.forEach(element => element.classList.remove('d-none'));
+                retailLink.classList.remove('active');
+                foodLink.classList.add('active');
+            }
+        }
+    </script>
 {% endblock %}
